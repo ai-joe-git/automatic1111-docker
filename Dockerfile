@@ -19,8 +19,8 @@ ENV DEFAULT_COMMANDLINE_ARGS="--no-download-sd-model --listen --ckpt-dir ${CKPT_
 # Consider --disable-console-progressbars
 # Also consider --nowebui
 
-# Set flags to install and exit, do not download default model
-ENV INSTALL_COMMANDLINE_ARGS="--exit"
+# Set flags to install and exit, do not download default model, use CPU
+ENV INSTALL_COMMANDLINE_ARGS="--exit --use-cpu all --precision full --no-half --skip-torch-cuda-test"
 
 # Run automatic1111 in installation mode
 ENV COMMANDLINE_ARGS="${INSTALL_COMMANDLINE_ARGS} ${DEFAULT_COMMANDLINE_ARGS}"
