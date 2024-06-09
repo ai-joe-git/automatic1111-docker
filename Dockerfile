@@ -31,9 +31,9 @@ ENV DEFAULT_COMMANDLINE_ARGS="--no-download-sd-model --listen --ckpt-dir ${CKPT_
 # Reset ENVs for production usage
 ENV COMMANDLINE_ARGS=${DEFAULT_COMMANDLINE_ARGS}
 
-# See if maybe it's breaking because venv doesn't exist in the Dockerfile?
-RUN mkdir /app/venv
+# Copy our run script to the working directory to deal with issues such as venv initialization
+COPY ./run.sh .
 
 EXPOSE 7860
 
-CMD ["bash", "webui.sh", "-f"]
+CMD ["bash", "run.sh"]
