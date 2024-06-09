@@ -20,11 +20,13 @@ ENV DEFAULT_COMMANDLINE_ARGS="--no-download-sd-model --listen --ckpt-dir ${CKPT_
 # Also consider --nowebui
 
 # Set flags to install and exit, do not download default model, use CPU
-ENV INSTALL_COMMANDLINE_ARGS="--exit --use-cpu all --precision full --no-half --skip-torch-cuda-test"
+# Unused due to install step being disabled to save on image size
+# ENV INSTALL_COMMANDLINE_ARGS="--exit --use-cpu all --precision full --no-half --skip-torch-cuda-test"
 
 # Run automatic1111 in installation mode
-ENV COMMANDLINE_ARGS="${INSTALL_COMMANDLINE_ARGS} ${DEFAULT_COMMANDLINE_ARGS}"
-RUN bash ./webui.sh -f
+# TODO: Disabled to save ~5GB on image size. See if there's a reasonable compromise here.
+# ENV COMMANDLINE_ARGS="${INSTALL_COMMANDLINE_ARGS} ${DEFAULT_COMMANDLINE_ARGS}"
+# RUN bash ./webui.sh -f
 
 # Reset ENVs for production usage
 ENV COMMANDLINE_ARGS=${DEFAULT_COMMANDLINE_ARGS}
