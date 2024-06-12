@@ -8,6 +8,9 @@ RUN apt-get -yq update && apt-get -yq install git python3 python3-venv libgl1 li
 # HACK: Isn't this a bad practice?
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git .
 
+# HACK: But if we do it once...might as well do it twice, right?
+RUN git clone https://github.com/w-e-w/sd-webui-nudenet-nsfw-censor.git extensions/sd-webui-nudenet-nsfw-censor
+
 # Disable TCMalloc warning
 # TODO: Consider installing TCMalloc to see if the performance gains are significant
 ENV NO_TCMALLOC="True"
