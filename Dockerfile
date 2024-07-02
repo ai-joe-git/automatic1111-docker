@@ -24,7 +24,7 @@ ENV EMBEDDINGS_DIR=/model/embeddings
 # Consider `--disable-console-progressbars` for api mode
 # Also consider `--nowebui` for api mode
 ENV API_ARGS="--listen --api --api-log"
-ENV DEFAULT_COMMANDLINE_ARGS="--ckpt-dir ${CKPT_DIR} --vae-dir ${VAE_DIR} --lora-dir ${LORA_DIR} --embeddings-dir ${EMBEDDINGS_DIR} --no-hashing --do-not-download-clip --no-download-sd-model"
+ENV DEFAULT_COMMANDLINE_ARGS="--ckpt-dir ${CKPT_DIR} --vae-dir ${VAE_DIR} --lora-dir ${LORA_DIR} --embeddings-dir ${EMBEDDINGS_DIR} --no-hashing --do-not-download-clip --no-download-sd-model --precision full --no-half --skip-torch-cuda-test --use-cpu all --enable-insecure-extension-access"
 # For easily inserting additional arguments as needed
 
 # Set flags to install and exit, do not download default model, use CPU
