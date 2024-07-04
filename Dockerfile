@@ -13,10 +13,11 @@ ENV CKPT_DIR=/DATA/AppData/Stable-Diffusion-WebUI/models
 ENV VAE_DIR=/DATA/AppData/Stable-Diffusion-WebUI/vae
 ENV LORA_DIR=/DATA/AppData/Stable-Diffusion-WebUI/lora
 ENV EMBEDDINGS_DIR=/DATA/AppData/Stable-Diffusion-WebUI/embeddings
+ENV OUTPUTS_DIR=/DATA/AppData/Stable-Diffusion-WebUI/outputs
+ENV CONFIG_DIR=/DATA/AppData/Stable-Diffusion-WebUI/config
 
 ENV API_ARGS="--listen --api --api-log"
-ENV DEFAULT_COMMANDLINE_ARGS="--ckpt-dir ${CKPT_DIR} --vae-dir ${VAE_DIR} --lora-dir ${LORA_DIR} --embeddings-dir ${EMBEDDINGS_DIR} --no-hashing --do-not-download-clip --no-download-sd-model --precision full --no-half --skip-torch-cuda-test --use-cpu all --enable-insecure-extension-access"
-
+ENV DEFAULT_COMMANDLINE_ARGS="--ckpt-dir ${CKPT_DIR} --vae-dir ${VAE_DIR} --lora-dir ${LORA_DIR} --embeddings-dir ${EMBEDDINGS_DIR} --outputs-dir ${OUTPUTS_DIR} --config-dir ${CONFIG_DIR} --no-hashing --do-not-download-clip --no-download-sd-model --precision full --no-half --skip-torch-cuda-test --use-cpu all --enable-insecure-extension-access"
 
 ENV COMMANDLINE_ARGS="${DEFAULT_COMMANDLINE_ARGS} ${API_ARGS}"
 
@@ -25,9 +26,11 @@ COPY ./run.sh .
 RUN mkdir -p /DATA/AppData/Stable-Diffusion-WebUI/models \
              /DATA/AppData/Stable-Diffusion-WebUI/vae \
              /DATA/AppData/Stable-Diffusion-WebUI/lora \
-             /DATA/AppData/Stable-Diffusion-WebUI/embeddings
+             /DATA/AppData/Stable-Diffusion-WebUI/embeddings \
+             /DATA/AppData/Stable-Diffusion-WebUI/outputs \
+             /DATA/AppData/Stable-Diffusion-WebUI/config
 
-VOLUME ["/DATA/AppData/Stable-Diffusion-WebUI/models", "/DATA/AppData/Stable-Diffusion-WebUI/vae", "/DATA/AppData/Stable-Diffusion-WebUI/lora", "/DATA/AppData/Stable-Diffusion-WebUI/embeddings"]
+VOLUME ["/DATA/AppData/Stable-Diffusion-WebUI/models", "/DATA/AppData/Stable-Diffusion-WebUI/vae", "/DATA/AppData/Stable-Diffusion-WebUI/lora", "/DATA/AppData/Stable-Diffusion-WebUI/embeddings", "/DATA/AppData/Stable-Diffusion-WebUI/outputs", "/DATA/AppData/Stable-Diffusion-WebUI/config"]
 
 EXPOSE 7860
 
