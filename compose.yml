@@ -1,35 +1,55 @@
+name: lively_prem
 services:
-  automatic1111:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: ghcr.io/joshbuker/automatic1111-docker:main
-    volumes:
-      - ~/Models:/model:ro
-    tty: true
-    ports:
-      - 7860:7860
+  stable-diffusion-webui:
+    cpu_shares: 90
+    command: []
+    container_name: automatic1111-docker
     deploy:
       resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
-  # Testing multiple GenAI services using GPUs, seems to work fine
-  ollama:
-    image: ollama/ollama
-    volumes:
-      - ollama:/root/.ollama
+        limits:
+          memory: 15771M
+    hostname: automatic1111-docker
+    image: ghcr.io/ai-joe-git/automatic1111-docker:main
+    labels:
+      icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/StableDiffusionWebUI/icon.png
     ports:
-     - 11434:11434
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
-
-volumes:
-  ollama: {}
+      - target: 7860
+        published: "7860"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /DATA/AppData/Stable-Diffusion-WebUI/models
+        target: /DATA/AppData/Stable-Diffusion-WebUI/models
+      - type: bind
+        source: /DATA/AppData/Stable-Diffusion-WebUI/vae
+        target: /DATA/AppData/Stable-Diffusion-WebUI/vae
+      - type: bind
+        source: /DATA/AppData/Stable-Diffusion-WebUI/lora
+        target: /DATA/AppData/Stable-Diffusion-WebUI/lora
+      - type: bind
+        source: /DATA/AppData/Stable-Diffusion-WebUI/embeddings
+        target: /DATA/AppData/Stable-Diffusion-WebUI/embeddings
+      - type: bind
+        source: /DATA/AppData/Stable-Diffusion-WebUI/outputs
+        target: /DATA/AppData/Stable-Diffusion-WebUI/outputs
+      - type: bind
+        source: /DATA/AppData/Stable-Diffusion-WebUI/config
+        target: /DATA/AppData/Stable-Diffusion-WebUI/config
+    devices: []
+    cap_add: []
+    environment: []
+    network_mode: bridge
+    privileged: false
+x-casaos:
+  author: self
+  category: self
+  hostname: ""
+  icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/StableDiffusionWebUI/icon.png
+  index: /
+  is_uncontrolled: false
+  port_map: "7860"
+  scheme: http
+  store_app_id: lively_prem
+  title:
+    custom: Stable Diffusion CPU
