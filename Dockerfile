@@ -2,7 +2,7 @@ FROM python:3.10
 
 WORKDIR /app
 
-RUN apt-get -yq update && apt-get -yq install git python3 python3-venv libgl1 libglib2.0-0
+RUN apt-get -yq update && apt-get -yq install git python3 python3-venv libgl1 libglib2.0-0 apt-get update && apt-get -y install cmake protobuf-compiler
 
 RUN git clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git .
 
