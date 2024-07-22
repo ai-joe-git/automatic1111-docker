@@ -15,7 +15,7 @@ ENV LORA_DIR=/DATA/AppData/Stable-Diffusion-WebUI/lora
 ENV EMBEDDINGS_DIR=/DATA/AppData/Stable-Diffusion-WebUI/embeddings
 ENV DATA_DIR=/DATA/AppData/Stable-Diffusion-WebUI
 
-ENV API_ARGS="--listen --api --api-log --nowebui --disable-console-progressbars"
+ENV API_ARGS="--listen --api --api-log"
 ENV DEFAULT_COMMANDLINE_ARGS="--data-dir ${DATA_DIR} --ckpt-dir ${CKPT_DIR} --vae-dir ${VAE_DIR} --lora-dir ${LORA_DIR} --embeddings-dir ${EMBEDDINGS_DIR} --no-hashing --do-not-download-clip --no-download-sd-model --precision full --no-half --skip-torch-cuda-test --use-cpu all --enable-insecure-extension-access"
 
 ENV COMMANDLINE_ARGS="${DEFAULT_COMMANDLINE_ARGS} ${API_ARGS}"
