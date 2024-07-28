@@ -23,4 +23,4 @@ From: https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Command-Line-
 - `--no-download-sd-model` Skips downloading the SD1.5 model, which takes a significant amount of disk space for a Docker image, and should be loaded by volume mounts anyway
 - `--theme dark` Set dark theme (useful when running w/ webui to not flashbang your eyes)
 - `--disable-console-progressbars` Disable the progress bars in console when generating images
-- `--precision full --no-half --skip-torch-cuda-test --use-cpu all --listen --enable-insecure-extension-access`
+- `--precision full --no-half --skip-torch-cuda-test --use-cpu all --listen --enable-insecure-extension-access` For CPU us Only
