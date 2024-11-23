@@ -1,4 +1,4 @@
-# automatic1111-docker
+# automatic1111-docker (Belullama)
 
 A dockerized version of Automatic1111.
 
